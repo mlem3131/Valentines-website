@@ -17,6 +17,31 @@
     <header>
         <h1>Happy Valentine's Day!</h1>
     </header>
+    <script>
+    let hearts = [];
+    function createHeart() {
+        let heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.style.position = "absolute";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = "0px";
+        heart.style.fontSize = Math.random() * 20 + 20 + "px";
+        heart.style.opacity = Math.random();
+        document.body.appendChild(heart);
+        hearts.push(heart);
+    }
+    setInterval(() => {
+        createHeart();
+        hearts.forEach((heart, index) => {
+            heart.style.top = parseFloat(heart.style.top) + 2 + "px";
+            if (parseFloat(heart.style.top) > window.innerHeight) {
+                document.body.removeChild(heart);
+                hearts.splice(index, 1);
+            }
+        });
+    }, 300);
+</script>
+
 
     <section id="slideshow">
         <h2>Our Favorite Moments</h2>
